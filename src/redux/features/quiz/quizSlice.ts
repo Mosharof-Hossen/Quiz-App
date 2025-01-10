@@ -20,11 +20,17 @@ const initialState: TQuiz = {
 export const quizSlice = createSlice({
     name: "quiz",
     initialState,
-    reducers: {}
+    reducers: {
+        setAnswer: (state, action) => {
+            const { answer, currentQuestionIndex } = action.payload;
+            state.userAnswers[currentQuestionIndex] = answer;
+        }
+    }
 })
 
 export const getQuiz = (state: RootState) => {
     return state.quizzes
 }
 
+export const { setAnswer } = quizSlice.actions
 export const quizReducer = quizSlice.reducer;
