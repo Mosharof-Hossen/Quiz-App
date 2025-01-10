@@ -4,22 +4,27 @@ import { getQuiz } from "@/redux/features/quiz/quizSlice";
 import { useAppSelector } from "@/redux/hook";
 
 const Question = () => {
-    const { question,currentQuestionIndex } = useAppSelector(getQuiz);
-    console.log({question,currentQuestionIndex});
+    const { question, currentQuestionIndex } = useAppSelector(getQuiz);
+    const currentQuestion = question[currentQuestionIndex];
+    console.log({ question, currentQuestionIndex, currentQuestion });
     return (
-        <Card className="w-[350px]">
-            <CardHeader>
-                <CardTitle>Create project</CardTitle>
-                <CardDescription>Deploy your new project in one-click.</CardDescription>
-            </CardHeader>
-            <CardContent>
-
-            </CardContent>
-            <CardFooter className="flex justify-between">
-                <Button variant="outline">Cancel</Button>
-                <Button>Deploy</Button>
-            </CardFooter>
-        </Card>
+        <div className="flex justify-center">
+            <Card className="w-[400px] rounded-md">
+                <CardHeader>
+                    <CardTitle>{currentQuestion.question}</CardTitle>
+                    <CardDescription>Question {currentQuestionIndex + 1} of {question.length}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    {
+                        currentQuestion.options.map((option, index) => <Button key={index} size="lg" className="w-full mt-2">{option}</Button>)
+                    }
+                </CardContent>
+                <CardFooter className="flex justify-between">
+                    <Button variant="outline">Cancel</Button>
+                    <Button>Deploy</Button>
+                </CardFooter>
+            </Card>
+        </div>
     )
 };
 
