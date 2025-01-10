@@ -1,10 +1,10 @@
-import { Button } from './components/ui/button'
+import Question from './Home/Question'
 
 function App() {
 
   return (
     <div>
-      <Button>hi hi</Button>
+      <Question></Question>
     </div>
   )
 }
