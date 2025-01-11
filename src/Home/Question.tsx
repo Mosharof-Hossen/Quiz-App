@@ -26,7 +26,7 @@ const Question = () => {
                             onClick={() => handleAnswerChange(option)}
                             key={index}
                             size="lg"
-                            className="w-full mt-2"
+                            className="w-full mt-2 whitespace-normal break-words"
                             variant={option === userAnswers[currentQuestionIndex]? "default":"outline"}
                         >{option}</Button>)
                     }

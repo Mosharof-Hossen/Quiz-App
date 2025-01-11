@@ -6,7 +6,7 @@ import { performanceCal } from "./PerformanceCal";
 
 
 const QuizSummary = () => {
-    const { question, currentQuestionIndex, userAnswers } = useAppSelector(getQuiz);
+    const { question, userAnswers } = useAppSelector(getQuiz);
     const currentAns = question.reduce((count, qn, i) => {
         return qn.correctAnswer === userAnswers[i] ? count + 1 : count;
     }, 0)
@@ -26,7 +26,7 @@ const QuizSummary = () => {
                         <h4>{correctPercentage}%</h4>
                         <h4>{performanceCal(correctPercentage)?.performance}</h4>
                     </div>
-                    <h3 className="">Incorrect Answer: {question.length - currentAns}</h3>
+                    <h3 className="text-red-500">Incorrect Answer: {question.length - currentAns}</h3>
                     <p className="text-sm font-bold">{performanceCal(correctPercentage)?.insight}</p>
                 </CardContent>
                 <CardFooter >
