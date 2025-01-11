@@ -6,13 +6,13 @@ import QuizControl from "./QuizControl";
 
 const Question = () => {
     const dispatch = useAppDispatch();
-    const { question, currentQuestionIndex } = useAppSelector(getQuiz);
+    const { question, currentQuestionIndex, userAnswers } = useAppSelector(getQuiz);
     const currentQuestion = question[currentQuestionIndex];
     const handleAnswerChange = (answer: string) => {
         console.log(answer);
-        dispatch(setAnswer({answer,currentQuestionIndex}))
+        dispatch(setAnswer({ answer, currentQuestionIndex }))
     }
-    console.log({ question, currentQuestionIndex, currentQuestion });
+    console.log({ question, currentQuestionIndex, currentQuestion,userAnswers });
     return (
         <div className="flex justify-center">
             <Card className="w-[400px] rounded-md">
@@ -27,6 +27,7 @@ const Question = () => {
                             key={index}
                             size="lg"
                             className="w-full mt-2"
+                            variant={option === userAnswers[currentQuestionIndex]? "default":"outline"}
                         >{option}</Button>)
                     }
                 </CardContent>
