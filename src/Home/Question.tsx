@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { getQuiz, setAnswer } from "@/redux/features/quiz/quizSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import QuizControl from "./QuizControl";
 
 const Question = () => {
     const dispatch = useAppDispatch();
@@ -29,9 +30,8 @@ const Question = () => {
                         >{option}</Button>)
                     }
                 </CardContent>
-                <CardFooter className="flex justify-between">
-                    <Button variant="outline">Cancel</Button>
-                    <Button>Deploy</Button>
+                <CardFooter >
+                    <QuizControl></QuizControl>
                 </CardFooter>
             </Card>
         </div>
